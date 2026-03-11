@@ -93,33 +93,86 @@
 <a id="how-to-use-these-skills"></a>
 ## 如何使用这些 skills
 
-一个 skill 本质上就是一个文件夹，里面至少包含 `SKILL.md`，也可能附带脚本、模板、参考资料和资源文件。实际使用时可以按下面的流程：
+### 第一步：先选出你需要的 skills
 
-1. 先根据当前任务选出 `1-3` 个最相关的 skills。
-2. 把这些 skill 文件夹复制到你的 agent skills 目录里。
-3. 如果 agent 不会自动发现新 skills，就重启或重新加载它。
-4. 正常向 agent 描述任务；如果你希望更可控，可以在 prompt 里直接点名要使用的 skill。
+先根据当前任务挑出一小组最相关的 skills。
 
-对于 Codex 风格的本地环境，常见目录是：
+- 如果你想按分类、标签和用途浏览，就看 [`docs/skills-index.md`](docs/skills-index.md)。
+- 如果你是从任务出发，例如写论文、做 benchmark 或清理 repo，就看 [`docs/usage-guide.md`](docs/usage-guide.md)。
+- 对大多数单次任务来说，先选 `1-3` 个 skills 就够了。
 
-- 全局目录：`~/.codex/skills/`
-- 项目级目录：`.codex/skills/`
+### 第二步：复制到你的 skills 目录
 
-安装示例：
+把 [`skills/curated/`](skills/curated/) 或 [`skills/custom/`](skills/custom/) 中单独的 skill 文件夹复制到下面这些常见目录之一。你可以选择全局安装，也可以只在单个项目里安装。
+
+**全局安装**（推荐给会在多个项目里复用的 skills）：
+
+| Tool | Directory |
+| --- | --- |
+| Cursor | `~/.cursor/skills/` |
+| Claude Code | `~/.claude/skills/` |
+| Codex | `~/.codex/skills/` |
+| Gemini CLI | `~/.gemini/skills/` |
+
+**项目级安装**（推荐给只想在某一个仓库里使用的 skills）：
+
+| Tool | Directory |
+| --- | --- |
+| Cursor | `.cursor/skills/` |
+| Claude Code | `.claude/skills/` |
+| Codex | `.codex/skills/` |
+| Gemini CLI | `.gemini/skills/` |
+
+如果你使用的 agent 采用不同的目录约定，就把同样的 skill 文件夹复制到那个工具实际配置的 skills 目录里。
+
+### 第三步：只复制你真正要用的 skills
+
+**示例：给 Cursor 做全局安装**
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -r skills/custom/research-planning ~/.codex/skills/
-cp -r skills/curated/scientific-writing ~/.codex/skills/
+cp -r Computer-science-scientific-skills/skills/curated/literature-review ~/.cursor/skills/
+cp -r Computer-science-scientific-skills/skills/curated/scientific-writing ~/.cursor/skills/
 ```
+
+**示例：给 Claude Code 做全局安装**
+
+```bash
+cp -r Computer-science-scientific-skills/skills/custom/benchmark-design ~/.claude/skills/
+cp -r Computer-science-scientific-skills/skills/custom/experiment-tracking ~/.claude/skills/
+```
+
+**示例：给 Codex 做全局安装**
+
+```bash
+cp -r Computer-science-scientific-skills/skills/custom/research-planning ~/.codex/skills/
+cp -r Computer-science-scientific-skills/skills/curated/scientific-writing ~/.codex/skills/
+```
+
+**示例：给 Gemini CLI 做全局安装**
+
+```bash
+cp -r Computer-science-scientific-skills/skills/custom/repo-cleanup ~/.gemini/skills/
+cp -r Computer-science-scientific-skills/skills/custom/github-release-prep ~/.gemini/skills/
+```
+
+**示例：项目级安装**
+
+```bash
+mkdir -p .codex/skills
+cp -r /path/to/Computer-science-scientific-skills/skills/custom/agent-coding .codex/skills/
+cp -r /path/to/Computer-science-scientific-skills/skills/curated/transformers .codex/skills/
+```
+
+### 第四步：在 prompt 里使用这些 skills
+
+安装好这些文件夹之后，正常向 agent 描述任务即可。如果你希望它更明确地调用某些 skills，可以在 prompt 中直接点名。
 
 Prompt 示例：
 
 - `Use the literature-review, citation-management, and scientific-writing skills to turn these papers into a related-work outline.`
 - `Use benchmark-design and experiment-tracking to define an evaluation plan for this repo.`
 - `Use repo-cleanup and github-release-prep to make this project ready for public release.`
-
-如果你使用的是其他支持 skills 的 agent，就把相同的 skill 文件夹复制到对应工具的 skills 目录即可。
+- `Use agent-coding and transformers to design a first version of this agent workflow.`
 
 <a id="how-to-browse"></a>
 ## 如何浏览

@@ -88,33 +88,86 @@ This repository is designed for skill-aware coding and research agent environmen
 
 ## How to Use These Skills
 
-A skill is a folder that contains a `SKILL.md` file plus optional scripts, assets, and references. In practice, usage is simple:
+### Step 1: Choose the skills you need
 
-1. Choose `1-3` skills that match your current task.
-2. Copy those folders into your agent's skills directory.
-3. Restart or reload your agent if it does not detect new skills automatically.
-4. Ask the agent to solve the task normally, and mention the skill names explicitly when you want tighter control.
+Start by picking a small set of skills that match your current workflow.
 
-For Codex-style local setups, common locations are:
+- Use [`docs/skills-index.md`](docs/skills-index.md) if you want to browse by category, tags, and use case.
+- Use [`docs/usage-guide.md`](docs/usage-guide.md) if you want to start from a task such as paper writing, benchmark design, or repo cleanup.
+- In most cases, `1-3` skills are enough for a single task.
 
-- global: `~/.codex/skills/`
-- project-level: `.codex/skills/`
+### Step 2: Copy skills to your skills directory
 
-Example installation:
+Copy the individual skill folders from [`skills/curated/`](skills/curated/) or [`skills/custom/`](skills/custom/) to one of the common skill directories below. You can install skills globally or per-project.
+
+**Global installation** (recommended for skills you use across projects):
+
+| Tool | Directory |
+| --- | --- |
+| Cursor | `~/.cursor/skills/` |
+| Claude Code | `~/.claude/skills/` |
+| Codex | `~/.codex/skills/` |
+| Gemini CLI | `~/.gemini/skills/` |
+
+**Project-level installation** (recommended when skills should stay inside one repo):
+
+| Tool | Directory |
+| --- | --- |
+| Cursor | `.cursor/skills/` |
+| Claude Code | `.claude/skills/` |
+| Codex | `.codex/skills/` |
+| Gemini CLI | `.gemini/skills/` |
+
+If your agent uses a different directory convention, copy the same skill folders into that tool's configured skills directory.
+
+### Step 3: Copy the specific skills you want
+
+**Example: global install for Cursor**
 
 ```bash
-mkdir -p ~/.codex/skills
-cp -r skills/custom/research-planning ~/.codex/skills/
-cp -r skills/curated/scientific-writing ~/.codex/skills/
+cp -r Computer-science-scientific-skills/skills/curated/literature-review ~/.cursor/skills/
+cp -r Computer-science-scientific-skills/skills/curated/scientific-writing ~/.cursor/skills/
 ```
+
+**Example: global install for Claude Code**
+
+```bash
+cp -r Computer-science-scientific-skills/skills/custom/benchmark-design ~/.claude/skills/
+cp -r Computer-science-scientific-skills/skills/custom/experiment-tracking ~/.claude/skills/
+```
+
+**Example: global install for Codex**
+
+```bash
+cp -r Computer-science-scientific-skills/skills/custom/research-planning ~/.codex/skills/
+cp -r Computer-science-scientific-skills/skills/curated/scientific-writing ~/.codex/skills/
+```
+
+**Example: global install for Gemini CLI**
+
+```bash
+cp -r Computer-science-scientific-skills/skills/custom/repo-cleanup ~/.gemini/skills/
+cp -r Computer-science-scientific-skills/skills/custom/github-release-prep ~/.gemini/skills/
+```
+
+**Example: project-level install**
+
+```bash
+mkdir -p .codex/skills
+cp -r /path/to/Computer-science-scientific-skills/skills/custom/agent-coding .codex/skills/
+cp -r /path/to/Computer-science-scientific-skills/skills/curated/transformers .codex/skills/
+```
+
+### Step 4: Use the skills in your prompt
+
+After the folders are installed, ask your agent to work normally. If you want more control, mention the skill names explicitly.
 
 Example prompts:
 
 - `Use the literature-review, citation-management, and scientific-writing skills to turn these papers into a related-work outline.`
 - `Use benchmark-design and experiment-tracking to define an evaluation plan for this repo.`
 - `Use repo-cleanup and github-release-prep to make this project ready for public release.`
-
-If you use another skill-aware agent, copy the same skill folders into that tool's equivalent skills directory.
+- `Use agent-coding and transformers to design a first version of this agent workflow.`
 
 ## How to Browse
 
