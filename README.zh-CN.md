@@ -1,8 +1,6 @@
 # Computer Science LLM Agent Skills
 
 ![Skills](https://img.shields.io/badge/Skills-44-2ea44f)
-![Install](https://img.shields.io/badge/Install-copy_skills%2F*-1f6feb)
-![Language](https://img.shields.io/badge/Language-Chinese--mirror-ffb000)
 ![Focus](https://img.shields.io/badge/Focus-CS_LLM_Agent_Workflows-0969da)
 
 一个面向 LLM agent 的计算机科研、学术写作、实验工作流与研究型软件工程 skills 仓库。
