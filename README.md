@@ -1,8 +1,6 @@
 # Computer Science LLM Agent Skills
 
 ![Skills](https://img.shields.io/badge/Skills-44-2ea44f)
-![Install](https://img.shields.io/badge/Install-copy_skills%2F*-1f6feb)
-![Language](https://img.shields.io/badge/Language-English--first-ffb000)
 ![Focus](https://img.shields.io/badge/Focus-CS_LLM_Agent_Workflows-0969da)
 
 A curated collection of reusable skills for LLM agents working on computer science research, academic writing, experiment workflows, and research-oriented software engineering.
