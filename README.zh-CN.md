@@ -16,6 +16,7 @@
 - [为什么使用这个仓库](#why-use-this-repo)
 - [仓库包含什么](#whats-included)
 - [如何开始](#getting-started)
+- [如何使用这些 skills](#how-to-use-these-skills)
 - [如何浏览](#how-to-browse)
 - [典型使用场景](#example-use-cases)
 - [来源与许可说明](#attribution-and-license-notes)
@@ -84,10 +85,41 @@
 
 1. 先看 [`docs/skills-index.md`](docs/skills-index.md)，按分类、标签和用途找到相关 skills。
 2. 如果你是从任务出发，例如写论文、做 benchmark 或清理 repo，就看 [`docs/usage-guide.md`](docs/usage-guide.md)。
-3. 从 [`skills/curated/`](skills/curated/) 或 [`skills/custom/`](skills/custom/) 里挑出需要的 skill 文件夹，复制到你的 agent 本地 skills 目录或项目级 skills 目录。
-4. 不要一次性全装，优先保留和当前工作流直接相关的 skills。
+3. 从 [`skills/curated/`](skills/curated/) 或 [`skills/custom/`](skills/custom/) 中挑出当前真正需要的少量 skills。
+4. 只把这些 skill 文件夹复制到你的 agent 本地 skills 目录或项目级 skills 目录。
 
 这个仓库面向的是那些能够在本地发现并使用 skill 文件夹的 coding / research agent 环境。
+
+<a id="how-to-use-these-skills"></a>
+## 如何使用这些 skills
+
+一个 skill 本质上就是一个文件夹，里面至少包含 `SKILL.md`，也可能附带脚本、模板、参考资料和资源文件。实际使用时可以按下面的流程：
+
+1. 先根据当前任务选出 `1-3` 个最相关的 skills。
+2. 把这些 skill 文件夹复制到你的 agent skills 目录里。
+3. 如果 agent 不会自动发现新 skills，就重启或重新加载它。
+4. 正常向 agent 描述任务；如果你希望更可控，可以在 prompt 里直接点名要使用的 skill。
+
+对于 Codex 风格的本地环境，常见目录是：
+
+- 全局目录：`~/.codex/skills/`
+- 项目级目录：`.codex/skills/`
+
+安装示例：
+
+```bash
+mkdir -p ~/.codex/skills
+cp -r skills/custom/research-planning ~/.codex/skills/
+cp -r skills/curated/scientific-writing ~/.codex/skills/
+```
+
+Prompt 示例：
+
+- `Use the literature-review, citation-management, and scientific-writing skills to turn these papers into a related-work outline.`
+- `Use benchmark-design and experiment-tracking to define an evaluation plan for this repo.`
+- `Use repo-cleanup and github-release-prep to make this project ready for public release.`
+
+如果你使用的是其他支持 skills 的 agent，就把相同的 skill 文件夹复制到对应工具的 skills 目录即可。
 
 <a id="how-to-browse"></a>
 ## 如何浏览

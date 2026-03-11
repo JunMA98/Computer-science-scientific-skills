@@ -16,6 +16,7 @@ A curated collection of reusable skills for computer science research, academic 
 - [Why Use This Repository](#why-use-this-repository)
 - [What's Included](#whats-included)
 - [Getting Started](#getting-started)
+- [How to Use These Skills](#how-to-use-these-skills)
 - [How to Browse](#how-to-browse)
 - [Example Use Cases](#example-use-cases)
 - [Attribution and License Notes](#attribution-and-license-notes)
@@ -80,10 +81,40 @@ The current public set covers these workflow areas:
 
 1. Browse [`docs/skills-index.md`](docs/skills-index.md) to find relevant skills by category, tags, and use case.
 2. Use [`docs/usage-guide.md`](docs/usage-guide.md) if you want to start from a task such as paper writing, benchmark design, or repo cleanup.
-3. Copy the specific skill folders you want from [`skills/curated/`](skills/curated/) or [`skills/custom/`](skills/custom/) into your agent's local skills directory or project-level skills directory.
-4. Keep only the skills that match your workflow, rather than installing everything blindly.
+3. Pick a small set of relevant skills from [`skills/curated/`](skills/curated/) or [`skills/custom/`](skills/custom/).
+4. Copy only those skill folders into your agent's local skills directory or project-level skills directory.
 
 This repository is designed for skill-aware coding and research agent environments where local skill folders can be discovered and used during work.
+
+## How to Use These Skills
+
+A skill is a folder that contains a `SKILL.md` file plus optional scripts, assets, and references. In practice, usage is simple:
+
+1. Choose `1-3` skills that match your current task.
+2. Copy those folders into your agent's skills directory.
+3. Restart or reload your agent if it does not detect new skills automatically.
+4. Ask the agent to solve the task normally, and mention the skill names explicitly when you want tighter control.
+
+For Codex-style local setups, common locations are:
+
+- global: `~/.codex/skills/`
+- project-level: `.codex/skills/`
+
+Example installation:
+
+```bash
+mkdir -p ~/.codex/skills
+cp -r skills/custom/research-planning ~/.codex/skills/
+cp -r skills/curated/scientific-writing ~/.codex/skills/
+```
+
+Example prompts:
+
+- `Use the literature-review, citation-management, and scientific-writing skills to turn these papers into a related-work outline.`
+- `Use benchmark-design and experiment-tracking to define an evaluation plan for this repo.`
+- `Use repo-cleanup and github-release-prep to make this project ready for public release.`
+
+If you use another skill-aware agent, copy the same skill folders into that tool's equivalent skills directory.
 
 ## How to Browse
 
